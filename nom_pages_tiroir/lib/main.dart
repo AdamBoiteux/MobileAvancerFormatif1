@@ -40,12 +40,19 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key:scaffoldKey,
       appBar: AppBar(
-        title: Text(widget.title),
-      ),
+          title: Text(widget.title),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back), onPressed: () {scaffoldKey.currentState?.openDrawer();},
+            tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+          ),
+      ),//appbar
       drawer: Drawer(
         child: Column(
             children: [
